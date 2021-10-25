@@ -1,0 +1,17 @@
+{
+  "TestRun": {
+    "Domain": "https://www.google.ru/",
+    "Authentication": {
+      "Username": "username",
+      "Password": "password"
+    },
+    "BrowserConfiguration":
+      {
+        "BrowserType": "Chrome",
+        "DriverSource": "../net5.0",
+        "Arguments": [
+          "--window-size=1366,768"
+        ]
+      }
+  }
+}
