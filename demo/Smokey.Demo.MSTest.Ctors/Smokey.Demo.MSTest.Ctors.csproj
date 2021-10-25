@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+
+        <IsPackable>false</IsPackable>
+
+        <AssemblyName>Smokey.Demo.MSTest.Ctors</AssemblyName>
+
+        <RootNamespace>Smokey.Demo.MSTest.Ctors</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
+        <PackageReference Include="MSTest.TestAdapter" Version="2.2.3" />
+        <PackageReference Include="MSTest.TestFramework" Version="2.2.3" />
+        <PackageReference Include="coverlet.collector" Version="3.0.2" />
+        <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="95.0.4638.1700" />
+        <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.30.0" />
+        <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="95.0.1020.30" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\Smokey.Extensions\Smokey.Extensions.csproj" />
+      <ProjectReference Include="..\..\src\Smokey.Core\Smokey.Core.csproj" />
+    </ItemGroup>
+
+</Project>
