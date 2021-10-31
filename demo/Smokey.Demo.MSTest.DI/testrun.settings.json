@@ -1,6 +1,6 @@
 {
   "TestRun": {
-    "Domain": "https://www.google.ru/",
+    "Domain": "http://www.google.ru/",
     "Authentication": {
       "Username": "username",
       "Password": "password"
@@ -10,8 +10,10 @@
         "BrowserType": "Chrome",
         "DriverSource": "../net5.0",
         "Arguments": [
-          "--window-size=1366,768"
-        ]
+          "--window-size=1366,768",
+          "--headless"
+        ],
+        "RemoteHost": "http://localhost:4444/"
       }
   }
 }
