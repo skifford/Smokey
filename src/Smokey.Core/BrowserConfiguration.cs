@@ -1,12 +1,24 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Smokey
 {
-    public sealed class BrowserConfiguration
+    public record BrowserConfiguration
     {
-        public BrowserType BrowserType { get; init; } = BrowserType.Undefined;
+        [Required]
+        public BrowserType BrowserType { get; init; }
+        
+        [Required]
+        [NotNull]
         public string DriverSource { get; init; }
+        
+        [Required]
+        [NotNull]
         public IReadOnlyCollection<string> Arguments { get; init; }
+        
+        [Required]
+        [NotNull]
         public string RemoteHost { get; init; }
     }
 }
