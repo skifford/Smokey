@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.Extensions.Logging;
 using OpenQA.Selenium;
 
 namespace Smokey
@@ -10,22 +9,21 @@ namespace Smokey
 
         public IWebDriver WebDriver { get; }
         
-        /// <exception cref="ArgumentNullException"></exception>
-        public Browser(IWebDriver webDriver)
+        private Browser(IWebDriver webDriver)
         {
             WebDriver = webDriver ?? throw new ArgumentNullException(nameof(webDriver));
         }
         
         /// <exception cref="ArgumentNullException"></exception>
-        public static Browser CreateBrowser(BrowserConfiguration browserConfiguration, ILogger logger = null)
+        public static Browser CreateBrowser(BrowserConfiguration browserConfiguration)
         {
             if (browserConfiguration is null)
             {
                 throw new ArgumentNullException(nameof(browserConfiguration));
             }
             
-            var driverFactory = new DriverFactory(logger);
-            var driver = driverFactory.CreateDriver(browserConfiguration);
+            var driver = DriverFactory.CreateDriver(browserConfiguration);
+            
             return new Browser(driver);
         }
 
@@ -33,7 +31,7 @@ namespace Smokey
 
         private void Dispose(bool disposing)
         {
-            if (_isDisposed)
+            if (_isDisposed || disposing is false)
             {
                 return;
             }

@@ -18,9 +18,8 @@
         <PackageReference Include="MSTest.TestAdapter" Version="2.2.3" />
         <PackageReference Include="MSTest.TestFramework" Version="2.2.3" />
         <PackageReference Include="coverlet.collector" Version="3.0.2" />
-        <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="95.0.4638.5400" />
+        <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="103.0.5060.5300" />
         <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.30.0" />
-        <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="96.0.1037-pre" />
     </ItemGroup>
 
     <ItemGroup>
@@ -29,7 +28,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="testrun.effective.json">
+      <None Update="testrun.settings.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
