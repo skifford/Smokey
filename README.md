@@ -22,15 +22,13 @@ For example, MSTest framework is shown.
 ```cs
     [TestClass]
     public abstract class TestBase : SmokeyTest
-    {
-        private const string RemoteHostName = "REMOTE_HOST";
-    
-        private static TestRun _testRun;
+    {   
+        protected static TestRun TestRun { get; private set; };
         
         [AssemblyInitialize]
         public static void TestRunSetup(TestContext context)
         {
-            _testRun = new TestRun
+            TestRun = new TestRun
             {
                 Domain = "https://www.google.ru/",
                 BrowserConfiguration = new BrowserConfiguration
@@ -40,18 +38,11 @@ For example, MSTest framework is shown.
                     Arguments = new[]
                     {
                         "--window-size=1366,768"
-                    },
-                    RemoteHost = "http://localhost:4444/" // Can be open in browser
+                    }
                 }
             };
             
-            var remoteHost = Env.GetString(RemoteHostName);
-            
-            var browserConfiguration = !string.IsNullOrWhiteSpace(remoteHost)
-                ? _testRun.BrowserConfiguration with { RemoteHost = remoteHost }
-                : _testRun.BrowserConfiguration;
-            
-            Browser = Browser.CreateBrowser(browserConfiguration);
+            Browser = Browser.CreateBrowser(TestRun.BrowserConfiguration);
         }
 
         [AssemblyCleanup]
@@ -64,10 +55,10 @@ For example, MSTest framework is shown.
         public void TestStartup()
         {
             Browser.RemoveTokens();
-            Browser.WebDriver.Navigate().GoToUrl(_testRun.Domain);
+            Browser.WebDriver.Navigate().GoToUrl(TestRun.Domain);
         }
 ```
-3. Use property Browser in your tests.
+3. Use properties Browser and TestRun in your tests.
 4. You are awesome!
 
 ## License
