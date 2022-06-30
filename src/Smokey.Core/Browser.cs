@@ -1,30 +1,47 @@
 ﻿using System;
+using System.Threading;
 using OpenQA.Selenium;
 
 namespace Smokey
 {
-    public sealed class Browser : IDisposable, IEquatable<Browser>
+    public sealed class Browser : IBrowser
     {
         private bool _isDisposed;
 
         public IWebDriver WebDriver { get; }
-        
-        private Browser(IWebDriver webDriver)
+
+        public CancellationToken CancellationToken { get; }
+
+        private Browser(IWebDriver webDriver, CancellationToken cancellationToken)
         {
             WebDriver = webDriver ?? throw new ArgumentNullException(nameof(webDriver));
+            CancellationToken = cancellationToken;
         }
-        
-        /// <exception cref="ArgumentNullException"></exception>
+
         public static Browser CreateBrowser(BrowserConfiguration browserConfiguration)
+        {
+            return CreateBrowser(browserConfiguration, CancellationTokenSource.CreateLinkedTokenSource().Token);
+        }
+
+        public static Browser CreateBrowser(
+            BrowserConfiguration browserConfiguration,
+            CancellationTokenSource cancellationTokenSource)
+        {
+            return CreateBrowser(browserConfiguration, cancellationTokenSource.Token);
+        }
+
+        public static Browser CreateBrowser(
+            BrowserConfiguration browserConfiguration,
+            CancellationToken cancellationToken)
         {
             if (browserConfiguration is null)
             {
                 throw new ArgumentNullException(nameof(browserConfiguration));
             }
-            
+
             var driver = DriverFactory.CreateDriver(browserConfiguration);
-            
-            return new Browser(driver);
+
+            return new Browser(driver, cancellationToken);
         }
 
         #region IDisposable

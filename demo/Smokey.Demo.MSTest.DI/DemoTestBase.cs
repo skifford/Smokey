@@ -7,7 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Smokey.Demo.MSTest.DI.Extensions;
-using Smokey.Extensions;
+using Smokey.DependencyInjection;
+using Smokey.Extensions.Browser;
 
 namespace Smokey.Demo.MSTest.DI
 {
