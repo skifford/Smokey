@@ -19,8 +19,6 @@ namespace Smokey
                 { BrowserType.Edge, CreateOptions<EdgeOptions> }
             };
         
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public static IWebDriver CreateDriver(BrowserConfiguration configuration)
         {
             if (configuration is null)
