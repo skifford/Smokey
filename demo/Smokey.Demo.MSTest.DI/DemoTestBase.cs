@@ -9,6 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Smokey.Demo.MSTest.DI.Extensions;
 using Smokey.DependencyInjection;
 using Smokey.Extensions.Browser;
+using Smokey.Models;
 
 namespace Smokey.Demo.MSTest.DI
 {

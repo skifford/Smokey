@@ -2,6 +2,7 @@ using DotNetEnv;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Smokey.Demo.MSTest.Ctors.Extensions;
 using Smokey.Extensions.Browser;
+using Smokey.Models;
 
 namespace Smokey.Demo.MSTest.Ctors
 {
