@@ -2,9 +2,33 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Smokey</RootNamespace>
-    <AssemblyName>Smokey</AssemblyName>
     <LangVersion>default</LangVersion>
+    <AssemblyName>Smokey</AssemblyName>
+    <RootNamespace>Smokey</RootNamespace>
+    <Authors>Eugene Kotovrasov</Authors>
+    <Title>Smokey</Title>
+    <Description>Alternative UI test tools that wraps Selenium</Description>
+    <RepositoryUrl>https://github.com/skifford/Smokey</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Version>1.0.0</Version>
+    <PackageVersion>1.0.0-alpha</PackageVersion>
+    <PackageDescription>1.0.0-alpha version of Smokey test tools</PackageDescription>
+    <PackageReleaseNotes>
+      - Agile configuring test-runs via app or json file is supported: browser type, driver version, screen resolution and etc.
+      - Usage in docker containers is supported.
+      - Creating Smokey objects via constructors or via dependency injections.
+      - Instance caching via pool is supported (similar to DI, but not quite).
+      - Several methods for saving application state into singleton values storage during test execution
+      without breaking chain of invocation are supported:
+        - Directly storing a key-value pair;
+        - Storing multiple values using attributes;
+        - Saving a value at read/write time using a property decorator.
+    </PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/skifford/Smokey/tree/master/src/Smokey</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>test;selenium;qa</PackageTags>
+    <IncludeSymbols>false</IncludeSymbols>
+    <IncludeSource>true</IncludeSource>
   </PropertyGroup>
 
   <ItemGroup>
