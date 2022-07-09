@@ -2,9 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>Smokey</RootNamespace>
-    <AssemblyName>Smokey</AssemblyName>
     <LangVersion>default</LangVersion>
+    <AssemblyName>Smokey</AssemblyName>
+    <RootNamespace>Smokey</RootNamespace>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Title>Smokey</Title>
+    <Authors>Eugene Kotovrasov</Authors>
   </PropertyGroup>
 
   <ItemGroup>
