@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using OpenQA.Selenium;
+using Smokey.Guarding;
 
 namespace Smokey.Models
 {
@@ -18,26 +19,11 @@ namespace Smokey.Models
             CancellationToken = cancellationToken;
         }
 
-        public static Browser CreateBrowser(BrowserConfiguration browserConfiguration)
-        {
-            return CreateBrowser(browserConfiguration, CancellationTokenSource.CreateLinkedTokenSource().Token);
-        }
-
         public static Browser CreateBrowser(
             BrowserConfiguration browserConfiguration,
-            CancellationTokenSource cancellationTokenSource)
+            CancellationToken cancellationToken = default)
         {
-            return CreateBrowser(browserConfiguration, cancellationTokenSource.Token);
-        }
-
-        public static Browser CreateBrowser(
-            BrowserConfiguration browserConfiguration,
-            CancellationToken cancellationToken)
-        {
-            if (browserConfiguration is null)
-            {
-                throw new ArgumentNullException(nameof(browserConfiguration));
-            }
+            Guard.NotNull(browserConfiguration);
 
             var driver = DriverFactory.CreateDriver(browserConfiguration);
 
