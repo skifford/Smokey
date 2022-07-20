@@ -22,25 +22,21 @@ namespace Smokey.Extensions.WebDriver
         {
             return () =>
             {
-                Exception ClickWithException()
+                bool TryClick()
                 {
                     try
                     {
                         webElement.Click();
-                        return null;
                     }
-                    catch (Exception exception)
+                    catch
                     {
-                        return exception;
+                        return false;
                     }
+                    
+                    return true;
                 }
 
-                var exception = webDriver.Wait(condition: _ => ClickWithException());
-
-                if (exception is not null)
-                {
-                    throw exception;
-                }
+                webDriver.Wait(condition: _ => TryClick());
             };
         }
 
