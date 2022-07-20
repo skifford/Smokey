@@ -1,0 +1,14 @@
+{
+  "TestRun": {
+    "Domain": "http://www.google.ru/",
+    "BrowserConfiguration":
+      {
+        "BrowserType": "Chrome",
+        "DriverSource": "../net5.0",
+        "Arguments": [
+          "--window-size=1366,768",
+          "--headless"
+        ]
+      }
+  }
+}

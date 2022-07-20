@@ -11,11 +11,18 @@ namespace Smokey.Extensions.WebDriver
             return webDriver.WaitWebElement(cssSelector).Text;
         }
         
-        public static string GetAttribute(this IWebDriver webDriver, string cssSelector, string attribute)
+        public static string Attribute(this IWebDriver webDriver, string cssSelector, string attribute)
         {
             return webDriver
                 .WaitWebElement(cssSelector)
                 .GetAttribute(attribute.NotEmpty(ExceptionMessages.Validation.NullOrWhiteSpace(nameof(attribute))));
+        }
+        
+        public static string CssValue(this IWebDriver webDriver, string cssSelector, string cssValue)
+        {
+            return webDriver
+                .WaitWebElement(cssSelector)
+                .GetCssValue(cssValue.NotEmpty(ExceptionMessages.Validation.NullOrWhiteSpace(nameof(cssValue))));
         }
         
         public static bool Exist(this IWebDriver webDriver, string cssSelector)
