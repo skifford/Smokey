@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Html5;
 using Smokey.Extensions.WebDriver;
@@ -67,13 +68,19 @@ namespace Smokey.Extensions.Browser
                 if (browser.WebDriver is not IJavaScriptExecutor)
                     return browser;
 
-                browser.WebDriver.ExecuteScripts(new[]
+                try
                 {
-                    "localStorage.removeItem('access_token');",
-                    "localStorage.removeItem('refresh_token');",
-                    "sessionStorage.removeItem('access_token');",
-                    "sessionStorage.removeItem('refresh_token');"
-                });
+                    browser.WebDriver.ExecuteScripts(new[]
+                    {
+                        "localStorage.removeItem('access_token');",
+                        "localStorage.removeItem('refresh_token');",
+                        "sessionStorage.removeItem('access_token');",
+                        "sessionStorage.removeItem('refresh_token');"
+                    });
+                }
+                catch (Exception exception) when (exception is WebDriverException)
+                {
+                }
             }
 
             return browser;
