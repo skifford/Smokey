@@ -1,13 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
 
         <IsPackable>false</IsPackable>
 
         <AssemblyName>Smokey.Demo.MSTest.DI</AssemblyName>
 
         <RootNamespace>Smokey.Demo.MSTest.DI</RootNamespace>
+
+        <LangVersion>default</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
