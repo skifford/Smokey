@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using Smokey.Extensions.WebDriver;
-using Smokey.Features.Pooling;
+using Smokey.Features.Caching;
 using Smokey.Models;
 
 namespace Smokey.Demo.PageObjects

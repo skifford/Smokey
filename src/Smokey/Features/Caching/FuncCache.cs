@@ -4,12 +4,12 @@ using Smokey.Guarding;
 
 namespace Smokey.Features.Caching;
 
-internal class Cache<TKey, TValue>
+internal class FuncCache<TKey, TValue>
 {
     private readonly Dictionary<TKey, TValue> _cache = new();
     private readonly Func<TKey, TValue> _func;
 
-    public Cache(Func<TKey, TValue> func)
+    public FuncCache(Func<TKey, TValue> func)
     {
         _func = Guard.NotNull(func);
     }
