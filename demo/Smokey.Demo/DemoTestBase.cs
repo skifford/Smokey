@@ -9,7 +9,7 @@ using Smokey.Demo.Extensions;
 using Smokey.Demo.PageObjects;
 using Smokey.DependencyInjection;
 using Smokey.Extensions.Browser;
-using Smokey.Features.Pooling;
+using Smokey.Features.Caching;
 using Smokey.Models;
 
 namespace Smokey.Demo

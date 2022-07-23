@@ -8,8 +8,8 @@ namespace Smokey.Features.ValuesCollecting;
 
 public static class ValuesCollector
 {
-    private static readonly Cache<object, Type> TypesCache = new(obj => obj.GetType());
-    private static readonly Cache<Type, PropertyInfo[]> PropertiesCache = new(type => type.GetProperties());
+    private static readonly FuncCache<object, Type> TypesCache = new(obj => obj.GetType());
+    private static readonly FuncCache<Type, PropertyInfo[]> PropertiesCache = new(type => type.GetProperties());
 
     public static void CollectValues(object from)
     {
@@ -24,8 +24,7 @@ public static class ValuesCollector
         }
 
         var type = TypesCache.GetBy(invoker);
-
-        // TODO Inheritances of SmokeyPageObject<T> handles only
+        
         if (type.BaseType == typeof(ValueType) || type == typeof(string))
         {
             return;

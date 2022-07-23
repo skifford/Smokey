@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Smokey.Guarding;
 
-namespace Smokey.Features.Pooling;
+namespace Smokey.Features.Caching;
 
 public static class Pool
 {

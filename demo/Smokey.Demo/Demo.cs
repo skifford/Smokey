@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Smokey.Demo.Localizations;
 using Smokey.Demo.PageObjects;
-using Smokey.Features.Pooling;
+using Smokey.Features.Caching;
 
 namespace Smokey.Demo
 {
