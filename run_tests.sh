@@ -1,5 +1,8 @@
 #! /bin/bash
 clear
-docker build -f Demo.MSTest.DI.Dockerfile . -t smokey_demo_mstest_di
-docker build -f Demo.MSTest.Ctros.Dockerfile . -t smokey_demo_mstest_ctors
+docker build -f Demo.Dockerfile . -t smokey_demo
 docker-compose -f docker-compose.demo.yml -p smokey up -d
+echo
+echo Waiting for tests running...
+echo
+docker logs smokey-test_runner_demo_chrome-1 -f

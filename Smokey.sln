@@ -5,16 +5,9 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smokey", "src\Smokey\Smokey.csproj", "{55569D62-E112-4FAF-9A27-264ED8BCAB79}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smokey.Demo.MSTest.Ctors", "demo\Smokey.Demo.MSTest.Ctors\Smokey.Demo.MSTest.Ctors.csproj", "{D5FC8C75-4E5D-4DBE-9FB1-2976A422F6D2}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smokey.Demo.MSTest.DI", "demo\Smokey.Demo.MSTest.DI\Smokey.Demo.MSTest.DI.csproj", "{95911AC5-8897-487C-BAC4-DBB36E968A76}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{C28B6D20-1E83-473A-8134-20E82C8D1445}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{C14E1BF2-C519-4D0E-96CF-DDF1B711CC6A}"
 	ProjectSection(SolutionItems) = preProject
-		Demo.MSTest.Ctros.Dockerfile = Demo.MSTest.Ctros.Dockerfile
-		Demo.MSTest.DI.Dockerfile = Demo.MSTest.DI.Dockerfile
+		Demo.Dockerfile = Demo.Dockerfile
 		docker-compose.demo.yml = docker-compose.demo.yml
 		run_tests.sh = run_tests.sh
 	EndProjectSection
@@ -33,14 +26,6 @@ Global
 		{55569D62-E112-4FAF-9A27-264ED8BCAB79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55569D62-E112-4FAF-9A27-264ED8BCAB79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55569D62-E112-4FAF-9A27-264ED8BCAB79}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5FC8C75-4E5D-4DBE-9FB1-2976A422F6D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5FC8C75-4E5D-4DBE-9FB1-2976A422F6D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5FC8C75-4E5D-4DBE-9FB1-2976A422F6D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5FC8C75-4E5D-4DBE-9FB1-2976A422F6D2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95911AC5-8897-487C-BAC4-DBB36E968A76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95911AC5-8897-487C-BAC4-DBB36E968A76}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95911AC5-8897-487C-BAC4-DBB36E968A76}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95911AC5-8897-487C-BAC4-DBB36E968A76}.Release|Any CPU.Build.0 = Release|Any CPU
 		{33D98BA0-4475-40E5-B4BC-A725B084C6F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{33D98BA0-4475-40E5-B4BC-A725B084C6F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33D98BA0-4475-40E5-B4BC-A725B084C6F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -54,9 +39,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D5FC8C75-4E5D-4DBE-9FB1-2976A422F6D2} = {C28B6D20-1E83-473A-8134-20E82C8D1445}
-		{95911AC5-8897-487C-BAC4-DBB36E968A76} = {C28B6D20-1E83-473A-8134-20E82C8D1445}
-		{C14E1BF2-C519-4D0E-96CF-DDF1B711CC6A} = {C28B6D20-1E83-473A-8134-20E82C8D1445}
 		{33D98BA0-4475-40E5-B4BC-A725B084C6F7} = {C28B6D20-1E83-473A-8134-20E82C8D1445}
 		{05133918-BFB3-4DF4-8E3F-C315FC33E5EB} = {C28B6D20-1E83-473A-8134-20E82C8D1445}
 	EndGlobalSection

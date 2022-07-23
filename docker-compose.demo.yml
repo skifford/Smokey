@@ -7,18 +7,9 @@ services:
       - "4444:4444"
     networks:
       default_network:
-    
-  test_runner_mstest_di:
-    image: "smokey_demo_mstest_di"
-    environment:
-      REMOTE_HOST: "http://selenium_standalone_chrome_host:4444/"
-    networks:
-      default_network:
-    depends_on:
-      - selenium_standalone_chrome_host
-
-  test_runner_mstest_ctors:
-    image: "smokey_demo_mstest_ctors"
+  
+  test_runner_demo_chrome:
+    image: "smokey_demo"
     environment:
       REMOTE_HOST: "http://selenium_standalone_chrome_host:4444/"
     networks:
