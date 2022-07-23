@@ -58,12 +58,15 @@ namespace Smokey.Demo
 
         private static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
+            services.AddHttpClient();
             services.AddSmokey(configuration);
         }
 
         private static void ConfigureBrowser()
         {
             var remoteHost = Env.GetString(RemoteHostName);
+            
+            Console.WriteLine($"remoteHost: {remoteHost}");
             
             var browserConfiguration = remoteHost.HasValue() 
                 ? _testRun.BrowserConfiguration with { RemoteHost = remoteHost }
