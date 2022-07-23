@@ -6,19 +6,19 @@ Smokey is an alternative UI test tools that wraps Selenium.
 - Usage in docker containers is supported.
 - Creating Smokey objects via constructors or via dependency injections.
 - Instance caching via pool is supported (similar to DI, but not quite).
-- Several methods are supported for saving application state into singleton values storage during test execution:
-directly storing a key-value pair, storing multiple values using attributes, and saving a value at read/write
-time using a property decorator. 
-- Also searching for data in the value store in the LINQ style is supported 
+- Several methods for saving application state into singleton values storage during test execution 
+without breaking chain of invocation are supported:
+  - Directly storing a key-value pair;
+  - Storing multiple values using attributes;
+  - Saving a value at read/write time using a property decorator. 
+- Also searching for data in the value storage in the LINQ style is supported 
 (see more: Demo/Smokey.Demo.Features.ValuesCollecting project).
 
 
 ## Structure of solution
-- **Demo**
-    Contains demo projects with examples of Smokey usage.
-    At moment there are examples for MSTest framework.
-- **Smokey** 
-    Contains core classes.
+- **Demo** - contains demo projects with examples of Smokey usage.
+At moment there are examples for MSTest framework.
+- **Smokey** - contains core classes.
 
 ## Quick start
 For example, MSTest framework is shown.
@@ -66,8 +66,38 @@ For example, MSTest framework is shown.
 3. Use properties Browser and TestRun in your tests.
 4. You are awesome!
 
-## Features
-A localization test for a one page might look like this:
+## Docker
+An example of running tests in docker containers is given via docker-compose:
+```yaml
+version: "3.4"
+
+services:
+  selenium_standalone_chrome_host:
+    image: "selenium/standalone-chrome:103.0"
+    ports:
+      - "4444:4444"
+    networks:
+      default_network:
+  
+  test_runner_demo_chrome:
+    image: "smokey_demo"
+    environment:
+      REMOTE_HOST: "http://selenium_standalone_chrome_host:4444/"
+    networks:
+      default_network:
+    depends_on:
+      - selenium_standalone_chrome_host
+
+networks:
+  default_network:
+```
+Run the **run_tests.sh** script from repository directory to see more:
+```shell
+./run_tests.sh --detach
+```
+
+## Advanced
+One line assertion is not impossible for UI tests. Case for a one page localization test might look like this:
 ```csharp
         public void Localization_Ru()
         {
@@ -90,7 +120,7 @@ A localization test for a one page might look like this:
             // Act
             page.CollectValues();
 
-            var actual = page.Storage.By("Page.Localization").OrderBy(value => value).ToList();
+            var actual = page.Storage.By("Key").OrderBy(value => value).ToList();
 
             // Assert
             CollectionAssert.AreEqual(expected, actual);
