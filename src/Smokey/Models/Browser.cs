@@ -7,8 +7,6 @@ namespace Smokey.Models
 {
     public sealed class Browser : IBrowser
     {
-        private bool _isDisposed;
-
         public IWebDriver WebDriver { get; }
 
         public CancellationToken CancellationToken { get; }
@@ -30,32 +28,10 @@ namespace Smokey.Models
             return new Browser(driver, cancellationToken);
         }
 
-        #region IDisposable
-
-        private void Dispose(bool disposing)
-        {
-            if (_isDisposed || disposing is false)
-            {
-                return;
-            }
-
-            WebDriver?.Quit();
-            WebDriver?.Dispose();
-            _isDisposed = true;
-        }
-
-        ~Browser()
-        {
-            Dispose(disposing: false);
-        }
-
         public void Dispose()
         {
-            Dispose(disposing: true);
-            GC.SuppressFinalize(this);
+            WebDriver?.Dispose();
         }
-
-        #endregion IDisposable
 
         #region IEquatable<Browser>
 
