@@ -9,6 +9,9 @@ using OpenQA.Selenium.Remote;
 
 namespace Smokey.Models
 {
+    /// <summary>
+    /// Factory for creating web drivers by given browser configuration
+    /// </summary>
     public static class DriverFactory
     {
         private static readonly Dictionary<BrowserType, Func<IReadOnlyCollection<string>, DriverOptions>>
@@ -19,6 +22,13 @@ namespace Smokey.Models
                 { BrowserType.Edge, CreateOptions<EdgeOptions> }
             };
         
+        /// <summary>
+        /// Creates web driver for browser by given configuration
+        /// </summary>
+        /// <param name="configuration">configuration of browser</param>
+        /// <returns>Instance of <see cref="IWebDriver"/></returns>
+        /// <exception cref="ArgumentNullException">configuration can not be null</exception>
+        /// <exception cref="ArgumentOutOfRangeException">supported browser types: Chrome, Firefox and Edge</exception>
         public static IWebDriver CreateDriver(BrowserConfiguration configuration)
         {
             if (configuration is null)
