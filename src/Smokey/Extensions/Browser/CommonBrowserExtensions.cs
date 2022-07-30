@@ -78,7 +78,7 @@ namespace Smokey.Extensions.Browser
                         "sessionStorage.removeItem('refresh_token');"
                     });
                 }
-                catch (Exception exception) when (exception is WebDriverException)
+                catch (WebDriverException)
                 {
                 }
             }
