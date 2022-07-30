@@ -5,18 +5,26 @@ using Smokey.Guarding;
 
 namespace Smokey.Models
 {
+    /// <summary>
+    /// Browser implementation
+    /// </summary>
     public sealed class Browser : IBrowser
     {
         public IWebDriver WebDriver { get; }
-
+        
         public CancellationToken CancellationToken { get; }
-
+        
         private Browser(IWebDriver webDriver, CancellationToken cancellationToken)
         {
             WebDriver = webDriver ?? throw new ArgumentNullException(nameof(webDriver));
             CancellationToken = cancellationToken;
         }
 
+        /// <summary>
+        /// Creates new instance of Browser
+        /// </summary>
+        /// <param name="browserConfiguration">configuration of browser instance</param>
+        /// <param name="cancellationToken">token for waiting cancellation</param>
         public static Browser CreateBrowser(
             BrowserConfiguration browserConfiguration,
             CancellationToken cancellationToken = default)
@@ -28,6 +36,9 @@ namespace Smokey.Models
             return new Browser(driver, cancellationToken);
         }
 
+        /// <summary>
+        /// Disposing sources of managed/unmanaged code such as <see cref="IWebDriver"/>
+        /// </summary>
         public void Dispose()
         {
             WebDriver?.Dispose();
