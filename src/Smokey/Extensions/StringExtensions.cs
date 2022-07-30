@@ -1,5 +1,5 @@
 ﻿using Smokey.Guarding;
-using Smokey.Guarding.Exceptions;
+using Smokey.Guarding.ExceptionMessages;
 
 namespace Smokey.Extensions
 {
@@ -7,14 +7,14 @@ namespace Smokey.Extensions
     {
         public static string NotNull(this string value, string message = null)
         {
-            message = message ?? ExceptionMessages.Validation.Null();
+            message = message ?? Validation.Null();
             
             return Guard.NotNull(value, message);
         }
         
         public static string NotEmpty(this string value, string message = null)
         {
-            message = message ?? ExceptionMessages.Validation.NullOrWhiteSpace();
+            message = message ?? Validation.NullOrWhiteSpace();
             
             return Guard.NotEmpty(value, message);
         }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Smokey.Guarding;
-using Smokey.Guarding.Exceptions;
+using Smokey.Guarding.ExceptionMessages;
 
 namespace Smokey.Extensions
 {
@@ -10,8 +10,8 @@ namespace Smokey.Extensions
     {
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> source, Action<T> action)
         {
-            action = Guard.NotNull(action, ExceptionMessages.Validation.Null(nameof(action)));
-            source = Guard.NotNull(source, ExceptionMessages.Validation.Null(nameof(source))).ToList();
+            action = Guard.NotNull(action, Validation.Null(nameof(action)));
+            source = Guard.NotNull(source, Validation.Null(nameof(source))).ToList();
             
             foreach (var element in source)
             {

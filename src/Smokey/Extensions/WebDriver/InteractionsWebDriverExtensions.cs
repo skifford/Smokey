@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium;
-using Smokey.Guarding.Exceptions;
+using Smokey.Guarding.ExceptionMessages;
 
 // ReSharper disable MemberCanBePrivate.Global
 
@@ -179,7 +179,7 @@ namespace Smokey.Extensions.WebDriver
             return webDriver
                 .Click(webElement)
                 .Clear(webElement)
-                .Run(() => webElement.SendKeys(text.NotNull(ExceptionMessages.Validation.Null(nameof(text)))));
+                .Run(() => webElement.SendKeys(text.NotNull(Validation.Null(nameof(text)))));
         }
     }
 }

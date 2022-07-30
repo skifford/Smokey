@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using OpenQA.Selenium;
 using Smokey.Guarding;
-using Smokey.Guarding.Exceptions;
+using Smokey.Guarding.ExceptionMessages;
 
 namespace Smokey.Extensions.WebDriver
 {
@@ -13,7 +13,7 @@ namespace Smokey.Extensions.WebDriver
             IReadOnlyCollection<string> scripts,
             bool async = false)
         {
-            scripts = Guard.NotNull(scripts, ExceptionMessages.Validation.Null(nameof(scripts)));
+            scripts = Guard.NotNull(scripts, Validation.Null(nameof(scripts)));
 
             if (scripts.IsEmpty())
             {
@@ -32,10 +32,10 @@ namespace Smokey.Extensions.WebDriver
         {
             if (webDriver is not IJavaScriptExecutor jse)
             {
-                throw new InvalidCastException(ExceptionMessages.Selenium.NotJsExecutor(nameof(webDriver)));
+                throw new InvalidCastException(Selenium.NotJsExecutor(nameof(webDriver)));
             }
             
-            Guard.NotEmpty(script, ExceptionMessages.Validation.NullOrWhiteSpace(nameof(script)));
+            Guard.NotEmpty(script, Validation.NullOrWhiteSpace(nameof(script)));
 
             if (async)
             {
