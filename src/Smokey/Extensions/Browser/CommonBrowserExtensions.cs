@@ -3,7 +3,7 @@ using System.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Html5;
 using Smokey.Extensions.WebDriver;
-using Smokey.Guarding.Exceptions;
+using Smokey.Guarding.ExceptionMessages;
 using Smokey.Models;
 
 // ReSharper disable SuspiciousTypeConversion.Global
@@ -20,7 +20,7 @@ namespace Smokey.Extensions.Browser
                 .SwitchTo()
                 .Window(browser.WebDriver.WindowHandles.Last())
                 .Navigate()
-                .GoToUrl(url.NotEmpty(ExceptionMessages.Validation.NullOrWhiteSpace(nameof(url))));
+                .GoToUrl(url.NotEmpty(Validation.NullOrWhiteSpace(nameof(url))));
 
             return browser;
         }

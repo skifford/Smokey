@@ -1,4 +1,5 @@
 ﻿using System;
+using Smokey.Constants;
 using Smokey.Features.Waiting;
 using Smokey.Models;
 
@@ -9,8 +10,8 @@ namespace Smokey.Extensions.Browser
         public static TResult Wait<TResult>(
             this IBrowser browser,
             Func<IBrowser, TResult> condition,
-            int timeout = Constants.Timeouts.DefaultWaitTimeout,
-            int pollingInterval = Constants.Timeouts.DefaultPollingInterval)
+            int timeout = Timeouts.DefaultWaitTimeout,
+            int pollingInterval = Timeouts.DefaultPollingInterval)
         {
             return Waiter.Wait(
                 source: browser,

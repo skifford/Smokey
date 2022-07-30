@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using OpenQA.Selenium;
 using Smokey.Guarding;
-using Smokey.Guarding.Exceptions;
+using Smokey.Guarding.ExceptionMessages;
 
 namespace Smokey.Extensions.WebDriver
 {
@@ -10,7 +10,7 @@ namespace Smokey.Extensions.WebDriver
     {
         public static IWebDriver Run(this IWebDriver webDriver, Action action)
         {
-            Guard.NotNull(action, ExceptionMessages.Validation.Null(nameof(action)));
+            Guard.NotNull(action, Validation.Null(nameof(action)));
 
             action.Invoke();
 
@@ -19,7 +19,7 @@ namespace Smokey.Extensions.WebDriver
 
         public static IWebDriver Run<T>(this IWebDriver webDriver, Action<T> action, T arg)
         {
-            Guard.NotNull(action, ExceptionMessages.Validation.Null(nameof(action)));
+            Guard.NotNull(action, Validation.Null(nameof(action)));
 
             action.Invoke(arg);
 
@@ -28,7 +28,7 @@ namespace Smokey.Extensions.WebDriver
 
         public static IWebDriver Run<T>(this IWebDriver webDriver, Action<IEnumerable<T>> action, params T[] args)
         {
-            Guard.NotNull(action, ExceptionMessages.Validation.Null(nameof(action)));
+            Guard.NotNull(action, Validation.Null(nameof(action)));
             
             action.Invoke(args);
             

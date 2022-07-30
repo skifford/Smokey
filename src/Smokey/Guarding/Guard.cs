@@ -1,5 +1,5 @@
 ﻿using System;
-using Smokey.Guarding.Exceptions;
+using Smokey.Guarding.ExceptionMessages;
 
 namespace Smokey.Guarding
 {
@@ -8,7 +8,7 @@ namespace Smokey.Guarding
         public static T NotNull<T>(T value, string message = null)
         {
             message = string.IsNullOrWhiteSpace(message) 
-                ? ExceptionMessages.Validation.Null() 
+                ? Validation.Null() 
                 : message;
             
             if (value is null)
@@ -22,7 +22,7 @@ namespace Smokey.Guarding
         public static string NotEmpty(string value, string message = null)
         {
             message = string.IsNullOrWhiteSpace(message) 
-                ? ExceptionMessages.Validation.NullOrEmpty() 
+                ? Validation.NullOrEmpty() 
                 : message;
             
             if (string.IsNullOrWhiteSpace(value))

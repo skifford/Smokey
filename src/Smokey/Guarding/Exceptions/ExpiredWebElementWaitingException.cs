@@ -1,15 +1,15 @@
 ﻿using System;
+using Smokey.Guarding.ExceptionMessages;
 
 namespace Smokey.Guarding.Exceptions
 {
     public sealed class ExpiredWebElementWaitingException : Exception
     {
-        public ExpiredWebElementWaitingException() : base(ExceptionMessages.Selenium.Timeout())
+        public ExpiredWebElementWaitingException() : base(Selenium.Timeout())
         {
         }
 
-        public ExpiredWebElementWaitingException(string cssSelector) : base(
-            ExceptionMessages.Selenium.Timeout(cssSelector))
+        public ExpiredWebElementWaitingException(string cssSelector) : base(Selenium.Timeout(cssSelector))
         {
         }
     }
