@@ -14,7 +14,7 @@ public static class Pool
     {
         var key = Register<T>(capacity);
         
-        for (var i = 0; i < capacity; i++)
+        for (var i = 0; i < capacity && Storage[key].Count <= capacity; i++)
         {
             var instance = new T();
             Storage[key].Push(instance);
@@ -27,7 +27,7 @@ public static class Pool
         
         Guard.NotNull(instantiating);
         
-        for (var i = 0; i < capacity; i++)
+        for (var i = 0; i < capacity && Storage[key].Count <= capacity; i++)
         {
             var instance = instantiating.Invoke();
             Storage[key].Push(instance);
@@ -43,7 +43,7 @@ public static class Pool
         
         Guard.NotNull(instantiating);
         
-        for (var i = 0; i < capacity; i++)
+        for (var i = 0; i < capacity && Storage[key].Count <= capacity; i++)
         {
             var instance = instantiating.Invoke(args);
             Storage[key].Push(instance);
@@ -69,11 +69,7 @@ public static class Pool
     public static void Release<T>(T instance)
     {
         var key = typeof(T);
-
-        if (Storage[key].Count < DefaultCapacity)
-        {
-            Storage[key].Push(key);
-        }
+        Storage[key].Push(instance);
     }
 
     private static Type Register<T>(int capacity)
